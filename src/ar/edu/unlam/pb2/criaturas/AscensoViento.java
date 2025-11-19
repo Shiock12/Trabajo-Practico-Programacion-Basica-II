@@ -1,11 +1,13 @@
 package ar.edu.unlam.pb2.criaturas;
 
-public class AscensoDelViento extends Transformaciones {
+public class AscensoViento extends Transformaciones {
 
-    public AscensoDelViento(Criatura base) {
-        super(base);
+    public AscensoViento(Criatura criatura) {
+        super(criatura);
     }
 
-    // - Afinidad principal pasa a ser AIRE
-    // - Sin perder afinidades previas (si después manejan varias afinidades)
+    @Override
+    public AfinidadElemental getAfinidadPrincipal() {
+        return AfinidadElemental.AIRE;
+    }
 }

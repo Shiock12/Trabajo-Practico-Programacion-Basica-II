@@ -1,23 +1,29 @@
 package ar.edu.unlam.pb2.criaturas;
 
 public class CriaturaAncestral extends CriaturaBase {
-	
-	public CriaturaAncestral(String nombre, Integer energiaInicial, AfinidadElemental afinidad) {
-        super(nombre, energiaInicial, afinidad);
-        if (this.energia < 100) {
-            this.energia = 100;
+
+    public CriaturaAncestral(String nombre, Integer energiaInicial, AfinidadElemental afinidad) {
+        super(nombre, energiaInicial < 100 ? 100 : energiaInicial, afinidad);
+    }
+
+    @Override
+    public void entrenar(MaestroElemental maestro, Integer intensidad) throws FaltaMaestriaExcepcion {
+
+        if (maestro.getNivelMaestria() < intensidad) {
+            throw new FaltaMaestriaExcepcion("El maestro no tiene suficiente maestría.");
+        }
+
+        // Aumenta energía normalmente
+        this.setEnergia(this.getEnergia() + intensidad);
+
+        // Nunca baja de 100
+        if (this.getEnergia() < 100) {
+            this.setEnergia(100);
+        }
+
+        // Sensible a entrenamientos extremos → se vuelve inestable
+        if (intensidad > maestro.getNivelMaestria() * 2) {
+            this.estado = EstadoEmocional.INESTABLE;
         }
     }
-	
-	 public void setEnergia(Integer energia) {
-         // - Garantizar que nunca quede con energía menor a 100
-         super.setEnergia(energia);
-     }
-	 
-	 public void entrenar(MaestroElemental maestro, Integer intensidad) throws FaltaMaestriaExcepcion {
-	        // - Verificar maestría alta del maestro (por ejemplo >= 30)
-	        // - Si el entrenamiento es "extremo" (intensidad alta), cambiar estado o energía
-	        // - Si no, aumentar energía de forma controlada
-	    }
-
 }

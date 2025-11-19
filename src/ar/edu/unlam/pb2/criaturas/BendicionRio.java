@@ -2,10 +2,15 @@ package ar.edu.unlam.pb2.criaturas;
 
 public class BendicionRio extends Transformaciones {
 
-    public BendicionRio(Criatura base) {
-        super(base);
-    }
+    public BendicionRio(Criatura criatura) {
+        super(criatura);
+        
+        Integer energiaDoble = criatura.getEnergia() * 2;
 
-    // TODO:
-    // - Hacer que la energía "vista" se duplique pero con tope 180
+        if (energiaDoble > 180) {
+            energiaDoble = 180;
+        }
+
+        this.setEnergia(energiaDoble);
+    }
 }

@@ -2,9 +2,11 @@ package ar.edu.unlam.pb2.criaturas;
 
 public class VinculoTerrestre extends Transformaciones {
 
-    public VinculoTerrestre(Criatura base) {
-        super(base);
-    }
+    public VinculoTerrestre(Criatura criatura) {
+        super(criatura);
 
-    // - Garantizar que la energía nunca baje de 50
+        if (criatura.getEnergia() < 50) {
+            this.setEnergia(50);
+        }
+    }
 }

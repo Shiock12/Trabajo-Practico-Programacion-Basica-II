@@ -1,11 +1,14 @@
 package ar.edu.unlam.pb2.criaturas;
 
-public class LlamaInterna  extends Transformaciones{
-	
-	public LlamaInterna (Criatura base) {
-		super(base);
-	}
+public class LlamaInterna extends Transformaciones {
 
-	// - Si afinidad es FUEGO -> +30 energía
-    // - Si no, la criatura se vuelve INESTABLE
+    public LlamaInterna(Criatura criatura) {
+        super(criatura);
+
+        if (criatura.getAfinidadPrincipal() == AfinidadElemental.FUEGO) {
+            this.setEnergia(criatura.getEnergia() + 30);
+        } else {
+            this.setEstadoEmocional(EstadoEmocional.INESTABLE);
+        }
+    }
 }
