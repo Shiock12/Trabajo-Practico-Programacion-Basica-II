@@ -6,10 +6,17 @@ import org.junit.Test;
 public class CriaturaAncestralTest {
 
     @Test
-    public void laAncestralNuncaQuedaConMenosDeCien() {
-        Criatura ancestral = new CriaturaAncestral("Zara", 120, AfinidadElemental.FUEGO);
+    public void siCreoUnaAncestralConMenosDeCienLaEnergiaArrancaEnCien() {
+        Criatura ancestral = new CriaturaAncestral("Abuela", 40, AfinidadElemental.TIERRA);
 
-        ancestral.setEnergia(50); // intento bajarla a lo bestia
+        assertTrue(ancestral.getEnergia() >= 100);
+    }
+
+    @Test
+    public void laAncestralNuncaQuedaConMenosDeCienAunqueLePongaUnValorBajo() {
+        Criatura ancestral = new CriaturaAncestral("Anciana", 150, AfinidadElemental.AIRE);
+
+        ancestral.setEnergia(50); // intento bajarla fuerte
 
         assertTrue(ancestral.getEnergia() >= 100);
     }

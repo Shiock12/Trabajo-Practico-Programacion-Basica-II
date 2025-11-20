@@ -17,4 +17,16 @@ public class CriaturaDomesticadaTest {
         // la domesticada debería seguir tranquila
         assertEquals(EstadoEmocional.TRANQUILA, transformada.getEstadoEmocional());
     }
+    @Test
+    public void siElMaestroNoTieneMaestriaNoPuedeEntrenarALaDomesticada() {
+        MaestroElemental maestro = new MaestroElemental("MaestroNuevo", 3, AfinidadElemental.FUEGO);
+        Criatura domesticada = new CriaturaDomesticada("GatoMagico", 40, AfinidadElemental.FUEGO);
+
+        try {
+            domesticada.entrenar(maestro, 10);
+            fail("Esperaba FaltaMaestriaExcepcion pero no se lanzó nada");
+        } catch (FaltaMaestriaExcepcion e) {
+            // OK
+        }
+    }
 }
