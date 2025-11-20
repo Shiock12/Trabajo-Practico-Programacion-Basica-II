@@ -2,7 +2,7 @@ package ar.edu.unlam.pb2.criaturas;
 
 public abstract class Transformaciones implements Criatura {
 
-    protected Criatura criatura; // La criatura a decorar
+    protected Criatura criatura; // La criatura decorada
 
     public Transformaciones(Criatura criatura) {
         this.criatura = criatura;
@@ -46,5 +46,11 @@ public abstract class Transformaciones implements Criatura {
     @Override
     public void entrenar(MaestroElemental maestro, Integer intensidad) throws FaltaMaestriaExcepcion {
         criatura.entrenar(maestro, intensidad);
+    }
+
+    // NUEVO: todas las transformaciones cuentan como transformadas
+    @Override
+    public boolean estaTransformada() {
+        return true;
     }
 }

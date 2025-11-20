@@ -28,3 +28,4 @@ public class reglaInteraccionAncestral implements ReglaInteraccion {
         return false;
     }
 }
+

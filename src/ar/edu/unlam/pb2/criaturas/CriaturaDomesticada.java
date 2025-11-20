@@ -30,7 +30,7 @@ public class CriaturaDomesticada extends CriaturaBase {
         super.setEstadoEmocional(estado);
     }
 
-    // NUEVO para Parte IV
+    // NUEVO para Parte 4
     @Override
     public boolean estaTransformada() {
         return false;

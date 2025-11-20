@@ -30,4 +30,11 @@ public class CriaturaSalvaje extends CriaturaBase {
         // 5. Las salvajes pueden quedar inestables
         this.estado = EstadoEmocional.INESTABLE;
     }
+
+    // NUEVO para Parte 4
+    @Override
+    public boolean estaTransformada() {
+        return false;
+    }
 }
+
