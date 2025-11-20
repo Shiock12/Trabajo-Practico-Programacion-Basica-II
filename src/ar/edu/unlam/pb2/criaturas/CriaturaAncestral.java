@@ -25,16 +25,15 @@ public class CriaturaAncestral extends CriaturaBase {
             throw new FaltaMaestriaExcepcion("El maestro no tiene suficiente maestría.");
         }
 
-        // Aumenta energía normalmente
+        // 
         this.setEnergia(this.getEnergia() + intensidad);
 
-        // Sensible a entrenamientos extremos → se vuelve inestable
         if (intensidad > maestro.getNivelMaestria() * 2) {
             this.estado = EstadoEmocional.INESTABLE;
         }
     }
 
-    // NUEVO para Parte 4
+    // 
     @Override
     public boolean estaTransformada() {
         return false;
