@@ -33,4 +33,10 @@ public class CriaturaAncestral extends CriaturaBase {
             this.estado = EstadoEmocional.INESTABLE;
         }
     }
+
+    // NUEVO para Parte 4
+    @Override
+    public boolean estaTransformada() {
+        return false;
+    }
 }
