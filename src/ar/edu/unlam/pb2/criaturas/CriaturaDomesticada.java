@@ -20,4 +20,13 @@ public class CriaturaDomesticada extends CriaturaBase {
         // Una criatura domesticada nunca se vuelve inestable
         this.estado = EstadoEmocional.TRANQUILA;
     }
+
+    @Override
+    public void setEstadoEmocional(EstadoEmocional estado) {
+        // Si alguien intenta ponerla INESTABLE, lo ignoramos
+        if (estado == EstadoEmocional.INESTABLE) {
+            return;
+        }
+        super.setEstadoEmocional(estado);
+    }
 }

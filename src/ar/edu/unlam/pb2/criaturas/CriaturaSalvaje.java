@@ -15,16 +15,19 @@ public class CriaturaSalvaje extends CriaturaBase {
         }
 
         // 2. Incremento impredecible: entre intensidad y 2×intensidad
-        int aumento = intensidad + (int)(Math.random() * intensidad);
+        Integer aumento = intensidad + (int)(Math.random() * intensidad);
 
-        this.setEnergia(this.getEnergia() + aumento);
+        Integer nuevaEnergia = this.getEnergia() + aumento;
 
         // 3. Si supera 200 → UNCHECKED
-        if (this.getEnergia() > 200) {
+        if (nuevaEnergia > 200) {
             throw new EnergiaDesbordadaExcepcion("La criatura salvaje se descontroló y superó 200 de energía.");
         }
 
-        // 4. Las salvajes pueden quedar inestables
+        // 4. Si no, actualizamos la energía normalmente
+        this.setEnergia(nuevaEnergia);
+
+        // 5. Las salvajes pueden quedar inestables
         this.estado = EstadoEmocional.INESTABLE;
     }
 }

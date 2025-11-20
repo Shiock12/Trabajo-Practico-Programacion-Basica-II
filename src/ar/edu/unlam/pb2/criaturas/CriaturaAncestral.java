@@ -7,6 +7,18 @@ public class CriaturaAncestral extends CriaturaBase {
     }
 
     @Override
+    public void setEnergia(Integer energia) {
+        // Nunca menos de 100, nunca más de 200
+        if (energia < 100) {
+            energia = 100;
+        }
+        if (energia > 200) {
+            energia = 200;
+        }
+        this.energia = energia;
+    }
+
+    @Override
     public void entrenar(MaestroElemental maestro, Integer intensidad) throws FaltaMaestriaExcepcion {
 
         if (maestro.getNivelMaestria() < intensidad) {
@@ -15,11 +27,6 @@ public class CriaturaAncestral extends CriaturaBase {
 
         // Aumenta energía normalmente
         this.setEnergia(this.getEnergia() + intensidad);
-
-        // Nunca baja de 100
-        if (this.getEnergia() < 100) {
-            this.setEnergia(100);
-        }
 
         // Sensible a entrenamientos extremos → se vuelve inestable
         if (intensidad > maestro.getNivelMaestria() * 2) {

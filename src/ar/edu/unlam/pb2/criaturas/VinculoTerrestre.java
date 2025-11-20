@@ -9,4 +9,12 @@ public class VinculoTerrestre extends Transformaciones {
             this.setEnergia(50);
         }
     }
+
+    @Override
+    public void setEnergia(Integer energia) {
+        if (energia < 50) {
+            energia = 50;
+        }
+        super.setEnergia(energia);
+    }
 }
